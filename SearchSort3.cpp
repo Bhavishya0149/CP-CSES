@@ -67,22 +67,20 @@ ll mod_sub(ll a, ll b, ll m){a = a % m; b = b % m; return (((a - b) % m) + m) % 
 // |_|_________/____|__|_____|__|__|__|______|__|_____\______/___________________
 
 void solve(){
-    int n, m, k; cin>>n>>m>>k;
-    vector <int> appli(n); for(auto &i : appli) cin>>i;
-    vector <int> appar(m); for(auto &i : appar) cin>>i;
-    sort(all(appli));
-    sort(all(appar));
+    int n, k; cin>>n>>k;
+    int arr[n]; for(auto &i : arr) cin>>i;
+
+    sort(arr, arr + n);
+
+    int ans = n;
     
-    int pt1 = 0, pt2 = 0;
-    int ans = 0;
-    while(pt1 < n && pt2 < m){
-        debug(abs(appli[pt1] - appar[pt2]));
-        if(abs(appli[pt1] - appar[pt2]) <= k){
-            ans++; pt1++; pt2++;
-        } else {
-            if(appli[pt1] < appar[pt2]) pt1++;
-            else pt2++;   
-        }
+    int i = 0, j = n - 1;
+
+    while(i <= j){
+        if(i == j) break;
+        if(arr[i] + arr[j] <= k){
+            i++; j--; ans--;
+        } else j--;
     }
 
     cans;
