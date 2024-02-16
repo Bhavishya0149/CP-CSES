@@ -1,0 +1,7 @@
+mid 1
+mid 1
+mid 0
+mid 1
+mid 1
+mid 0
+Time: 2777 ms
